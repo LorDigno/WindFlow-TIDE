@@ -147,6 +147,7 @@ _NUMBERS = {
 _NUMERIC_PRIORITY = {
     DataTypes.INT: 1,
     DataTypes.BIGINT: 2,
+    DataTypes.UBIGINT: 2,
     DataTypes.FLOAT: 3,
     DataTypes.DOUBLE: 4,
 }

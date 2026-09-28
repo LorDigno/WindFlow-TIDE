@@ -2,16 +2,8 @@ from windflow_table_api import *
 from pathlib import Path
 
 env = TableEnvironment(
-    par= 2, 
-    policy=TimePolicy.EVENT_TIME,
-    time_baseline= ("epoch da decidere una volta preso il dataset", TimeFormats.ISO8601)
-)
-
-from windflow_table_api import *
-from pathlib import Path
-
-env = TableEnvironment(
-    par= 2, 
+    include_dir= Path("../include"),
+    par= 5, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )
@@ -31,13 +23,13 @@ auction_schema = (SchemaBuilder()
 )
 
 auction_config = InputFileConfiguration(
-    path = Path("../data_streams/auction.csv"),
+    path = Path("../nexmark_datasets/70m_auction.csv"),
     format= FileFormat.CSV,
     schema= auction_schema,
     has_header= True,
     time_col= "auction_dateTime",
     order= True,                        
-    split_size= SplitSize.kilobytes(500)
+    split_size= SplitSize.megabytes(64)
 )
 
 auction = env.table_from_file(auction_config, "auction_source")
@@ -56,13 +48,13 @@ person_schema = (SchemaBuilder()
 )
 
 person_config = InputFileConfiguration(
-    path = Path("../data_streams/person.csv"),
+    path = Path("../nexmark_datasets/70m_person.csv"),
     format = FileFormat.CSV,
     schema = person_schema,
     has_header = True,
     time_col = "person_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.kilobytes(400)
+    split_size= SplitSize.megabytes(32)
 )
 
 person = env.table_from_file(person_config, "person_source")
@@ -80,13 +72,13 @@ bid_schema = (SchemaBuilder()
 )
 
 bid_config = InputFileConfiguration(
-    path = Path("../data_streams/bid.csv"),
+    path = Path("../nexmark_datasets/70m_bid.csv"),
     format = FileFormat.CSV,
     schema = bid_schema,
     has_header = True,
     time_col = "bid_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.megabytes(5)
+    split_size= SplitSize.megabytes(256)
 )
 
 bid = env.table_from_file(bid_config, "bid_source")

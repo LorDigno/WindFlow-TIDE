@@ -27,6 +27,7 @@ class ExpressionTranslator:
             ExprType.BINARY_OP: self._translate_binary_op,
             ExprType.UNARY_OP: self._translate_unary_op,
             ExprType.CURRENT_TIMESTAMP: self._translate_current_ts,
+            ExprType.AGGREGATE: self._translate_col_ref
         }
 
         #dispatcher per aggregazioni

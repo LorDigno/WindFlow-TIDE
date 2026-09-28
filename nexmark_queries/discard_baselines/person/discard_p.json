@@ -1,0 +1,93 @@
+{
+    "query_id": "discard_p",
+    "root": {
+        "op_type": "SELECT",
+        "schema_out": {
+            "person_id": "BIGINT",
+            "name": "STRING",
+            "email_address": "STRING",
+            "credit_card": "STRING",
+            "city": "STRING",
+            "state": "STRING",
+            "person_dateTime": "ISO8601",
+            "extra": "STRING"
+        },
+        "schema_in": {
+            "person_id": "BIGINT",
+            "name": "STRING",
+            "email_address": "STRING",
+            "credit_card": "STRING",
+            "city": "STRING",
+            "state": "STRING",
+            "person_dateTime": "ISO8601",
+            "extra": "STRING"
+        },
+        "expressions": [
+            {
+                "expr_type": "COL_REF",
+                "data_type": "BIGINT",
+                "name": "person_id"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "STRING",
+                "name": "name"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "STRING",
+                "name": "email_address"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "STRING",
+                "name": "credit_card"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "STRING",
+                "name": "city"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "STRING",
+                "name": "state"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "ISO8601",
+                "name": "person_dateTime"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "STRING",
+                "name": "extra"
+            }
+        ],
+        "parents": [
+            {
+                "op_type": "FROM",
+                "schema_out": {
+                    "person_id": "BIGINT",
+                    "name": "STRING",
+                    "email_address": "STRING",
+                    "credit_card": "STRING",
+                    "city": "STRING",
+                    "state": "STRING",
+                    "person_dateTime": "ISO8601",
+                    "extra": "STRING"
+                },
+                "source_id": "person_source",
+                "config": {
+                    "filepath": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv",
+                    "file_format": "CSV",
+                    "header": true,
+                    "time_col": "person_dateTime",
+                    "order": true,
+                    "delay": null,
+                    "split_size": 8388608
+                }
+            }
+        ]
+    }
+}

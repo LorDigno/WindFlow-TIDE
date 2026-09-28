@@ -2,15 +2,7 @@ from windflow_table_api import *
 from pathlib import Path
 
 env = TableEnvironment(
-    par= 2, 
-    policy=TimePolicy.EVENT_TIME,
-    time_baseline= ("epoch da decidere una volta preso il dataset", TimeFormats.ISO8601)
-)
-
-from windflow_table_api import *
-from pathlib import Path
-
-env = TableEnvironment(
+    include_dir= Path("../../include"),
     par= 2, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
@@ -31,13 +23,13 @@ auction_schema = (SchemaBuilder()
 )
 
 auction_config = InputFileConfiguration(
-    path = Path("../data_streams/auction.csv"),
+    path = Path("../../nexmark_datasets/70m_auction.csv"),
     format= FileFormat.CSV,
     schema= auction_schema,
     has_header= True,
     time_col= "auction_dateTime",
     order= True,                        
-    split_size= SplitSize.kilobytes(500)
+    split_size= SplitSize.megabytes(8)
 )
 
 auction = env.table_from_file(auction_config, "auction_source")
@@ -56,56 +48,44 @@ person_schema = (SchemaBuilder()
 )
 
 person_config = InputFileConfiguration(
-    path = Path("../data_streams/person.csv"),
+    path = Path("../../nexmark_datasets/70m_person.csv"),
     format = FileFormat.CSV,
     schema = person_schema,
     has_header = True,
     time_col = "person_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.kilobytes(400)
+    split_size= SplitSize.megabytes(16)
 )
 
 person = env.table_from_file(person_config, "person_source")
 
-#---- bid
-bid_schema = (SchemaBuilder()
-    .add_column("auction_id", DataTypes.BIGINT)             # Riferimento ad Auction
-    .add_column("bidder", DataTypes.BIGINT)                 # ID utente (Person) che fa l'offerta
-    .add_column("price", DataTypes.BIGINT)                  # Valore offerta (in centesimi, coerente con initial_bid/reserve)
-    .add_column("channel", DataTypes.STRING)                # Canale di provenienza offerta
-    .add_column("url", DataTypes.STRING)
-    .add_column("bid_dateTime", TimeFormats.ISO8601)        # Timestamp dell'offerta
-    .add_column("extra", DataTypes.STRING)                   # Campo di padding standard NEXMark
-    .build()
+#---    QUERY 3
+#--- Who is selling in OR, ID or CA in category 10, and for what auction ids?
+
+p_cond = (
+    (col("state") == "OR") | (col("state") == "CA") | (col("state") == "ID")
+) 
+
+a_cond = col("category") == 10
+
+theta_cond = (
+    col("seller") == col("person_id")
 )
 
-bid_config = InputFileConfiguration(
-    path = Path("../data_streams/bid.csv"),
-    format = FileFormat.CSV,
-    schema = bid_schema,
-    has_header = True,
-    time_col = "bid_dateTime",
-    order = True,                                           # da vedere
-    split_size= SplitSize.megabytes(5)
+#interval brutto per simulare la join completa
+interval = Interval(
+    Duration.days(-31),
+    Duration.days(31)
 )
 
-bid = env.table_from_file(bid_config, "bid_source")
+filtered_auctions = auction.where(a_cond).select("auction_id", "seller")
 
-#---    QUERY 2
-#--- Find bids with specific auction ids and show their bid price.
-
-cond = (
-    (col("auction_id") == 1007)
-    | (col("auction_id") == 1020)
-    | (col("auction_id") == 2001)
-    | (col("auction_id") == 2019)
-    | (col("auction_id") == 2087)
+q3 = (person
+    .name_query("selling_in_states")
+    .where(p_cond)
+    #prima occasine in cui il non avere la join completa ci frega (interval placeholder)
+    .join(filtered_auctions, [], attachment= interval, where= theta_cond)
+    .select("name", "city", "state", "auction_id")        
 )
 
-q2 = (bid
-    .name_query("specific_id")
-    .where(cond)
-    .select("auction_id", "price")
-)
-
-env.execute(q2, rexecute=True, output_dir="./query2")
+env.execute(q3, rexecute=True, output_dir="./theta_ver")

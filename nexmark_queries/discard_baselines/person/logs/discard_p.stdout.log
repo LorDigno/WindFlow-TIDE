@@ -1,0 +1,37 @@
+[32mWindFlow Status Message: PipeGraph [discard_p] is running with 10 threads[0m
+--> DEFAULT (out-of-order) mode [32menabled[0m
+--> EVENT_TIME policy [32menabled[0m
+--> Backpressure [31mdisabled[0m
+--> Non-blocking queues [32menabled[0m
+--> Pinning of threads [32menabled[0m
+        [SRC0] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv aperto.
+        [SRC1] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv aperto.
+        [SINK] File discard_p_output0.csv aperto.
+        [SINK] File discard_p_output1.csv aperto.
+        [SRC2] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv aperto.
+        [SRC3] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv aperto.
+        [SINK] File discard_p_output2.csv aperto.
+        [SINK] File discard_p_output3.csv aperto.
+        [SRC4] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv aperto.
+        [SINK] File discard_p_output4.csv aperto.
+        [SRC4] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv parsing terminato.
+        [SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv replica=4 start_us=51714187029598 stop_us=51714187790674 tuples=255536
+        [SINK4] File discard_p_output4.csv completato e chiuso.
+        [SINK_METRICS] sink=discard_p_output4.csv replica=4 start_us=51714187029722 stop_us=51714187790726 tuples=255536
+        [SRC3] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv parsing terminato.
+        [SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv replica=3 start_us=51714187029186 stop_us=51714187841014 tuples=267785
+        [SINK3] File discard_p_output3.csv completato e chiuso.
+        [SINK_METRICS] sink=discard_p_output3.csv replica=3 start_us=51714187029392 stop_us=51714187841043 tuples=267785
+        [SRC2] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv parsing terminato.
+        [SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv replica=2 start_us=51714187029086 stop_us=51714187879395 tuples=292102
+        [SINK2] File discard_p_output2.csv completato e chiuso.
+        [SINK_METRICS] sink=discard_p_output2.csv replica=2 start_us=51714187029215 stop_us=51714187879422 tuples=292102
+        [SRC0] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv parsing terminato.
+        [SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv replica=0 start_us=51714187028741 stop_us=51714187915236 tuples=292316
+        [SINK0] File discard_p_output0.csv completato e chiuso.
+        [SINK_METRICS] sink=discard_p_output0.csv replica=0 start_us=51714187028865 stop_us=51714187915267 tuples=292316
+        [SRC1] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv parsing terminato.
+        [SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv replica=1 start_us=51714187028832 stop_us=51714187946934 tuples=292261
+        [SINK1] File discard_p_output1.csv completato e chiuso.
+        [SINK_METRICS] sink=discard_p_output1.csv replica=1 start_us=51714187029012 stop_us=51714187946961 tuples=292261
+        [32mWindFlow Status Message: PipeGraph [discard_p] executed successfully[0m

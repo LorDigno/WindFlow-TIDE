@@ -1,0 +1,19 @@
+[32mWindFlow Status Message: PipeGraph [discard_p] is running with 4 threads[0m
+--> DEFAULT (out-of-order) mode [32menabled[0m
+--> EVENT_TIME policy [32menabled[0m
+--> Backpressure [31mdisabled[0m
+--> Non-blocking queues [32menabled[0m
+--> Pinning of threads [32menabled[0m
+[SRC0] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv aperto.
+[SRC1] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv aperto.
+[SINK] File discard_p_output0.csv aperto.
+[SINK] File discard_p_output1.csv aperto.
+[SRC1] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv parsing terminato.
+[SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv replica=1 start_us=51718615494534 stop_us=51718701824224 tuples=31953376
+[SINK1] File discard_p_output1.csv completato e chiuso.
+[SINK_METRICS] sink=discard_p_output1.csv replica=1 start_us=51718615494633 stop_us=51718701824338 tuples=31953376
+[SRC0] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv parsing terminato.
+[SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv replica=0 start_us=51718615494394 stop_us=51718702683270 tuples=32446624
+[SINK0] File discard_p_output0.csv completato e chiuso.
+[SINK_METRICS] sink=discard_p_output0.csv replica=0 start_us=51718615494528 stop_us=51718702683336 tuples=32446624
+[32mWindFlow Status Message: PipeGraph [discard_p] executed successfully[0m

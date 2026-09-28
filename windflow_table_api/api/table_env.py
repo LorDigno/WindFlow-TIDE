@@ -235,7 +235,7 @@ class TableEnvironment:
     def execute(self, 
         query: Query, 
         output_dir: str = ".", 
-        rexecute: bool = False,
+        rexecute: bool = True,
         sync: bool = False
     ) -> JobHandle:
         """

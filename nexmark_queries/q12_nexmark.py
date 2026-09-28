@@ -3,14 +3,13 @@ from pathlib import Path
 
 env = TableEnvironment(
     include_dir= Path("../include"),
-    par= 2, 
-    policy= TimePolicy.INGRESS_TIME,
-    #epoch=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
+    par= 5, 
+    policy=TimePolicy.EVENT_TIME,
+    time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )
 
 #---- auction
 auction_schema = (SchemaBuilder()
-                  
     .add_column("auction_id", DataTypes.BIGINT)
     .add_column("item_name", DataTypes.STRING)
     .add_column("description", DataTypes.STRING)
@@ -24,12 +23,13 @@ auction_schema = (SchemaBuilder()
 )
 
 auction_config = InputFileConfiguration(
-    path = Path("../data_streams/auction.csv"),
+    path = Path("../nexmark_datasets/70m_auction.csv"),
     format= FileFormat.CSV,
     schema= auction_schema,
     has_header= True,
+    time_col= "auction_dateTime",
     order= True,                        
-    split_size= SplitSize.kilobytes(500)
+    split_size= SplitSize.megabytes(64)
 )
 
 auction = env.table_from_file(auction_config, "auction_source")
@@ -48,12 +48,13 @@ person_schema = (SchemaBuilder()
 )
 
 person_config = InputFileConfiguration(
-    path = Path("../data_streams/person.csv"),
+    path = Path("../nexmark_datasets/70m_person.csv"),
     format = FileFormat.CSV,
     schema = person_schema,
     has_header = True,
+    time_col = "person_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.kilobytes(400)
+    split_size= SplitSize.megabytes(32)
 )
 
 person = env.table_from_file(person_config, "person_source")
@@ -71,15 +72,17 @@ bid_schema = (SchemaBuilder()
 )
 
 bid_config = InputFileConfiguration(
-    path = Path("../data_streams/bid.csv"),
+    path = Path("../nexmark_datasets/70m_bid.csv"),
     format = FileFormat.CSV,
     schema = bid_schema,
     has_header = True,
-    order = True,                                       # da vedere
-    split_size= SplitSize.megabytes(5)
+    time_col = "bid_dateTime",
+    order = True,                                           # da vedere
+    split_size= SplitSize.megabytes(256)
 )
 
 bid = env.table_from_file(bid_config, "bid_source")
+
 
 #---    QUERY 12
 #--- How many bids does a user make within a fixed processing time limit? 

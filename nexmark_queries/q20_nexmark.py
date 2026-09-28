@@ -83,6 +83,7 @@ bid_config = InputFileConfiguration(
 
 bid = env.table_from_file(bid_config, "bid_source")
 
+
 #---    QUERY 20
 #--- Get bids with the corresponding auction information where category is 10.
 
