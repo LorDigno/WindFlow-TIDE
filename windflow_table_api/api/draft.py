@@ -68,12 +68,12 @@ class Draft:
     def checks(self, current_op: Operator) -> None:
         """
         Controlla che valgano le condizioni di seguenza degli operatori,
-         se tale non è il caso solleva un RuntimeError.
+         se tale non è il caso solleva un ValueError.
         """
         prev_op = self.get_last_operator()
 
         if (not isinstance(current_op, SelectOp)) and isinstance(prev_op, GroupByOp):
-            raise RuntimeError(
+            raise ValueError(
                 f"Operazione non valida: non è possibile applicare '{current_op.get_op_type().value}' dopo un GroupBy. "
                 f"Dopo group_by() è obbligatorio invocare select() per definire proiezioni ed aggregazioni."
             )

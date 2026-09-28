@@ -235,7 +235,6 @@ class TableEnvironment:
     def execute(self, 
         query: Query, 
         output_dir: str = ".", 
-        rexecute: bool = True,
         sync: bool = False
     ) -> JobHandle:
         """
@@ -243,9 +242,6 @@ class TableEnvironment:
         costruisce il JSON e invoca la generazione/compilazione C++.
         Il parametro "output_dir" è la directory in cui andranno inseriti i JSON, 
         di default è la dir corrente.
-        Il parametro "rexecute" se impostato a True (di default è False) 
-        fa rieseguire la serializzazione di file già presenti nella output_dir.
-        Questo potrebbe portare problemi se tale file sta venendo parsato per un'altra query avviata precedentemente.
         Rende un oggetto JobHandle per il monitoraggio. 
         """
         #lazy import per evitare import circolari
@@ -276,11 +272,6 @@ class TableEnvironment:
             self._validate_dag(q.root_operator)
 
             file_path = out_path / f"{q.table_id}.json"
-
-            #controllo che il file non ci sia già, in tal caso non c'è bisogno di riscriverlo
-            if (not rexecute) and file_path.exists():
-                print(f"[TABLE API EXECUTE] '{file_path}' è già presente, non verrà ricalcolato.")
-                continue
 
             #creo l'albero rapresentante la Query con un dizionario
             root = {
