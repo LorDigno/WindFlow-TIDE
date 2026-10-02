@@ -1,12 +1,34 @@
-[32mWindFlow Status Message: PipeGraph [auctions_with_max_bids] is running with 25 threads[0m
+[32mWindFlow Status Message: PipeGraph [auctions_with_max_bids] is running with 37 threads[0m
 --> DEFAULT (out-of-order) mode [32menabled[0m
 --> EVENT_TIME policy [32menabled[0m
 --> Backpressure [31mdisabled[0m
 --> Non-blocking queues [32menabled[0m
 --> Pinning of threads [32menabled[0m
-[SRC[SRC0] File 1/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv aperto.] File 
-/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv aperto.
-[SRC0] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv aperto.
-[SRC1] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv aperto.
-[SINK] File auctions_with_max_bids_output1.csv aperto.
+[SRC0] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv aperto.
+[SRC1] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv aperto.
+[SRC2] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv aperto.
+[SRC0] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv aperto.
+[SRC1] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv aperto.
+[SRC2] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv aperto.
 [SINK] File auctions_with_max_bids_output0.csv aperto.
+[SRC2] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv parsing terminato.
+[SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv replica=2 start_us=52083352954968 stop_us=52083362270833 tuples=3042975
+[SRC1] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv parsing terminato.
+[SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv replica=1 start_us=52083352954834 stop_us=52083362311710 tuples=3044194
+[SRC0] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv parsing terminato.
+[SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv replica=0 start_us=52083352954756 stop_us=52083362378847 tuples=3112831
+[SRC2] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv parsing terminato.
+[SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv replica=2 start_us=52083352952992 stop_us=52083366137730 tuples=3042975
+[SRC1] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv parsing terminato.
+[SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv replica=1 start_us=52083352952857 stop_us=52083366149757 tuples=3044194
+[SRC0] File /disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv parsing terminato.
+[SRC_METRICS] source=/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv replica=0 start_us=52083352952851 stop_us=52083367385763 tuples=3112831
+[SINK] File auctions_with_max_bids_output2.csv aperto.
+[SINK] File auctions_with_max_bids_output1.csv aperto.
+[SINK2] File auctions_with_max_bids_output2.csv completato e chiuso.
+[SINK_METRICS] sink=auctions_with_max_bids_output2.csv replica=2 start_us=52084266675664 stop_us=52084266675664 tuples=0
+[SINK1] File auctions_with_max_bids_output1.csv completato e chiuso.
+[SINK_METRICS] sink=auctions_with_max_bids_output1.csv replica=1 start_us=52084266675712 stop_us=52084266675712 tuples=0
+[SINK0] File auctions_with_max_bids_output0.csv completato e chiuso.
+[SINK_METRICS] sink=auctions_with_max_bids_output0.csv replica=0 start_us=52083353707495 stop_us=52084523956483 tuples=11892620
+[32mWindFlow Status Message: PipeGraph [auctions_with_max_bids] executed successfully[0m

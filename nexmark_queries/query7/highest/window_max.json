@@ -1,34 +1,26 @@
 {
-    "query_id": "bids_counter_per_auction",
+    "query_id": "window_max",
     "root": {
         "op_type": "SELECT",
         "schema_out": {
-            "auction_id": "BIGINT",
-            "bids_counter": "BIGINT"
+            "price": "BIGINT"
         },
         "schema_in": {
-            "auction_id": "BIGINT",
-            "COUNT": "BIGINT"
+            "MAX_price": "BIGINT"
         },
         "expressions": [
             {
                 "expr_type": "COL_REF",
                 "data_type": "BIGINT",
-                "name": "auction_id"
-            },
-            {
-                "expr_type": "COL_REF",
-                "data_type": "BIGINT",
-                "name": "COUNT",
-                "alias": "bids_counter"
+                "name": "MAX_price",
+                "alias": "price"
             }
         ],
         "parents": [
             {
                 "op_type": "WINDOW_GROUP_BY",
                 "schema_out": {
-                    "auction_id": "BIGINT",
-                    "COUNT": "BIGINT"
+                    "MAX_price": "BIGINT"
                 },
                 "schema_in": {
                     "auction_id": "BIGINT",
@@ -39,18 +31,16 @@
                     "bid_dateTime": "ISO8601",
                     "extra": "STRING"
                 },
-                "keys": [
-                    "auction_id"
-                ],
+                "keys": [],
                 "window": {
                     "type": "TIME",
                     "kind": "TUMBLE",
                     "size": {
-                        "value": 12,
+                        "value": 1,
                         "unit": "HOURS"
                     },
                     "slide": {
-                        "value": 12,
+                        "value": 1,
                         "unit": "HOURS"
                     }
                 },
@@ -58,10 +48,14 @@
                     {
                         "expr_type": "AGGREGATE",
                         "data_type": "BIGINT",
-                        "name": "COUNT",
-                        "alias": "bids_counter",
-                        "func": "COUNT",
-                        "target": null
+                        "name": "MAX_price",
+                        "alias": "price",
+                        "func": "MAX",
+                        "target": {
+                            "expr_type": "COL_REF",
+                            "data_type": "BIGINT",
+                            "name": "price"
+                        }
                     }
                 ],
                 "parents": [
@@ -84,7 +78,7 @@
                             "time_col": "bid_dateTime",
                             "order": true,
                             "delay": null,
-                            "split_size": 33554432
+                            "split_size": 67108864
                         }
                     }
                 ]

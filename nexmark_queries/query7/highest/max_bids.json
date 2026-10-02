@@ -1,14 +1,20 @@
 {
-    "query_id": "bids_counter_per_auction",
+    "query_id": "max_bids",
     "root": {
         "op_type": "SELECT",
         "schema_out": {
             "auction_id": "BIGINT",
-            "bids_counter": "BIGINT"
+            "price": "BIGINT",
+            "bidder": "BIGINT"
         },
         "schema_in": {
+            "price": "BIGINT",
             "auction_id": "BIGINT",
-            "COUNT": "BIGINT"
+            "bidder": "BIGINT",
+            "channel": "STRING",
+            "url": "STRING",
+            "bid_dateTime": "ISO8601",
+            "extra": "STRING"
         },
         "expressions": [
             {
@@ -19,18 +25,27 @@
             {
                 "expr_type": "COL_REF",
                 "data_type": "BIGINT",
-                "name": "COUNT",
-                "alias": "bids_counter"
+                "name": "price"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "BIGINT",
+                "name": "bidder"
             }
         ],
         "parents": [
             {
-                "op_type": "WINDOW_GROUP_BY",
+                "op_type": "JOIN_INTERVAL",
                 "schema_out": {
+                    "price": "BIGINT",
                     "auction_id": "BIGINT",
-                    "COUNT": "BIGINT"
+                    "bidder": "BIGINT",
+                    "channel": "STRING",
+                    "url": "STRING",
+                    "bid_dateTime": "ISO8601",
+                    "extra": "STRING"
                 },
-                "schema_in": {
+                "tab1_schema": {
                     "auction_id": "BIGINT",
                     "bidder": "BIGINT",
                     "price": "BIGINT",
@@ -39,31 +54,22 @@
                     "bid_dateTime": "ISO8601",
                     "extra": "STRING"
                 },
+                "tab2_schema": {
+                    "price": "BIGINT"
+                },
                 "keys": [
-                    "auction_id"
+                    "price"
                 ],
-                "window": {
-                    "type": "TIME",
-                    "kind": "TUMBLE",
-                    "size": {
-                        "value": 12,
+                "attachment": {
+                    "lower_bound": {
+                        "value": 0,
                         "unit": "HOURS"
                     },
-                    "slide": {
-                        "value": 12,
+                    "upper_bound": {
+                        "value": 2,
                         "unit": "HOURS"
                     }
                 },
-                "aggregations": [
-                    {
-                        "expr_type": "AGGREGATE",
-                        "data_type": "BIGINT",
-                        "name": "COUNT",
-                        "alias": "bids_counter",
-                        "func": "COUNT",
-                        "target": null
-                    }
-                ],
                 "parents": [
                     {
                         "op_type": "FROM",
@@ -84,8 +90,15 @@
                             "time_col": "bid_dateTime",
                             "order": true,
                             "delay": null,
-                            "split_size": 33554432
+                            "split_size": 67108864
                         }
+                    },
+                    {
+                        "op_type": "TAB_REF",
+                        "schema_out": {
+                            "price": "BIGINT"
+                        },
+                        "source_id": "window_max"
                     }
                 ]
             }

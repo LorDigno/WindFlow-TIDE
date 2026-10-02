@@ -3,10 +3,11 @@
     "root": {
         "op_type": "SELECT",
         "schema_out": {
-            "auction_id": "BIGINT"
+            "auction_id": "BIGINT",
+            "maxxxxxx": "BIGINT"
         },
         "schema_in": {
-            "bids_counter": "BIGINT",
+            "maxxxxxx": "BIGINT",
             "auction_id": "BIGINT"
         },
         "expressions": [
@@ -14,32 +15,37 @@
                 "expr_type": "COL_REF",
                 "data_type": "BIGINT",
                 "name": "auction_id"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "BIGINT",
+                "name": "maxxxxxx"
             }
         ],
         "parents": [
             {
                 "op_type": "JOIN_INTERVAL",
                 "schema_out": {
-                    "bids_counter": "BIGINT",
+                    "maxxxxxx": "BIGINT",
                     "auction_id": "BIGINT"
                 },
                 "tab1_schema": {
                     "auction_id": "BIGINT",
-                    "bids_counter": "BIGINT"
+                    "maxxxxxx": "BIGINT"
                 },
                 "tab2_schema": {
-                    "bids_counter": "BIGINT"
+                    "maxxxxxx": "BIGINT"
                 },
                 "keys": [
-                    "bids_counter"
+                    "maxxxxxx"
                 ],
                 "attachment": {
                     "lower_bound": {
-                        "value": -4,
+                        "value": -1,
                         "unit": "HOURS"
                     },
                     "upper_bound": {
-                        "value": 4,
+                        "value": 13,
                         "unit": "HOURS"
                     }
                 },
@@ -48,14 +54,14 @@
                         "op_type": "TAB_REF",
                         "schema_out": {
                             "auction_id": "BIGINT",
-                            "bids_counter": "BIGINT"
+                            "maxxxxxx": "BIGINT"
                         },
-                        "source_id": "bids_counter_per_auction"
+                        "source_id": "bids_counter_per_auction_query_4"
                     },
                     {
                         "op_type": "TAB_REF",
                         "schema_out": {
-                            "bids_counter": "BIGINT"
+                            "maxxxxxx": "BIGINT"
                         },
                         "source_id": "max_bid_count"
                     }

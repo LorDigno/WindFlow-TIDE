@@ -1,0 +1,37 @@
+{
+    "query_id": "bids_counter_per_auction_query_4",
+    "root": {
+        "op_type": "SELECT",
+        "schema_out": {
+            "auction_id": "BIGINT",
+            "maxxxxxx": "BIGINT"
+        },
+        "schema_in": {
+            "auction_id": "BIGINT",
+            "bids_counter": "BIGINT"
+        },
+        "expressions": [
+            {
+                "expr_type": "COL_REF",
+                "data_type": "BIGINT",
+                "name": "auction_id"
+            },
+            {
+                "expr_type": "COL_REF",
+                "data_type": "BIGINT",
+                "name": "bids_counter",
+                "alias": "maxxxxxx"
+            }
+        ],
+        "parents": [
+            {
+                "op_type": "TAB_REF",
+                "schema_out": {
+                    "auction_id": "BIGINT",
+                    "bids_counter": "BIGINT"
+                },
+                "source_id": "bids_counter_per_auction"
+            }
+        ]
+    }
+}

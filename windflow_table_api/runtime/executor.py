@@ -6,7 +6,6 @@ from windflow_table_api.api.job_handle import JobHandle
 from .cmake_manager import CMakeManager
 from .compiler import CppCompiler
 
-
 class Executor:
   """Entry point del runtime: gestisce CMake, compilazione e lancio del processo nativo."""
 

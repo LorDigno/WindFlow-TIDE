@@ -1,33 +1,33 @@
 {
-    "query_id": "bids_counter_per_auction",
+    "query_id": "ingress_time_windows",
     "root": {
         "op_type": "SELECT",
         "schema_out": {
-            "auction_id": "BIGINT",
-            "bids_counter": "BIGINT"
+            "bidder": "BIGINT",
+            "processed": "BIGINT"
         },
         "schema_in": {
-            "auction_id": "BIGINT",
+            "bidder": "BIGINT",
             "COUNT": "BIGINT"
         },
         "expressions": [
             {
                 "expr_type": "COL_REF",
                 "data_type": "BIGINT",
-                "name": "auction_id"
+                "name": "bidder"
             },
             {
                 "expr_type": "COL_REF",
                 "data_type": "BIGINT",
                 "name": "COUNT",
-                "alias": "bids_counter"
+                "alias": "processed"
             }
         ],
         "parents": [
             {
                 "op_type": "WINDOW_GROUP_BY",
                 "schema_out": {
-                    "auction_id": "BIGINT",
+                    "bidder": "BIGINT",
                     "COUNT": "BIGINT"
                 },
                 "schema_in": {
@@ -40,18 +40,18 @@
                     "extra": "STRING"
                 },
                 "keys": [
-                    "auction_id"
+                    "bidder"
                 ],
                 "window": {
                     "type": "TIME",
                     "kind": "TUMBLE",
                     "size": {
-                        "value": 12,
-                        "unit": "HOURS"
+                        "value": 1000,
+                        "unit": "MILLISECONDS"
                     },
                     "slide": {
-                        "value": 12,
-                        "unit": "HOURS"
+                        "value": 1000,
+                        "unit": "MILLISECONDS"
                     }
                 },
                 "aggregations": [
@@ -59,7 +59,7 @@
                         "expr_type": "AGGREGATE",
                         "data_type": "BIGINT",
                         "name": "COUNT",
-                        "alias": "bids_counter",
+                        "alias": "processed",
                         "func": "COUNT",
                         "target": null
                     }
@@ -78,10 +78,10 @@
                         },
                         "source_id": "bid_source",
                         "config": {
-                            "filepath": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv",
+                            "filepath": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_bid.csv",
                             "file_format": "CSV",
                             "header": true,
-                            "time_col": "bid_dateTime",
+                            "time_col": null,
                             "order": true,
                             "delay": null,
                             "split_size": 33554432

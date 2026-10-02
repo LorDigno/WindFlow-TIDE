@@ -7,9 +7,9 @@
 #include <limits>
 
 // ============================================================================
-// Struct: source_bids_counter_per_auction_from_5
+// Struct: source_bids_counter_per_auction_from_6
 // ============================================================================
-struct source_bids_counter_per_auction_from_5 {
+struct source_bids_counter_per_auction_from_6 {
     int64_t auction_id;
     int64_t bidder;
     int64_t price;
@@ -23,21 +23,21 @@ struct source_bids_counter_per_auction_from_5 {
 
 
 // ============================================================================
-// Struct: bids_counter_per_auction_window_group_by_4_key_struct
+// Struct: bids_counter_per_auction_window_group_by_5_key_struct
 // ============================================================================
-struct bids_counter_per_auction_window_group_by_4_key_struct {
+struct bids_counter_per_auction_window_group_by_5_key_struct {
     int64_t auction_id;
 
 
-    bool operator==(const bids_counter_per_auction_window_group_by_4_key_struct& other) const {
+    bool operator==(const bids_counter_per_auction_window_group_by_5_key_struct& other) const {
         return auction_id == other.auction_id;
     }
 };
 
 namespace std {
     template<>
-    struct hash<bids_counter_per_auction_window_group_by_4_key_struct> {
-        size_t operator()(const bids_counter_per_auction_window_group_by_4_key_struct& k) const {
+    struct hash<bids_counter_per_auction_window_group_by_5_key_struct> {
+        size_t operator()(const bids_counter_per_auction_window_group_by_5_key_struct& k) const {
             size_t h = 0;
             h ^= std::hash<int64_t>{}(k.auction_id) + 0x9e3779b9 + (h << 6) + (h >> 2);
             return h;
@@ -46,28 +46,28 @@ namespace std {
 }
 
 // ============================================================================
-// Struct: bids_counter_per_auction_window_group_by_4_struct_out
+// Struct: bids_counter_per_auction_window_group_by_5_struct_out
 // ============================================================================
-struct bids_counter_per_auction_window_group_by_4_struct_out {
+struct bids_counter_per_auction_window_group_by_5_struct_out {
     int64_t auction_id;
     int64_t COUNT = 0; 
     uint64_t win_id = 0; 
 
-    bids_counter_per_auction_window_group_by_4_struct_out() = default;
+    bids_counter_per_auction_window_group_by_5_struct_out() = default;
 
-    bids_counter_per_auction_window_group_by_4_struct_out(uint64_t _id) 
+    bids_counter_per_auction_window_group_by_5_struct_out(uint64_t _id) 
         : win_id(_id) {}
 
-    bids_counter_per_auction_window_group_by_4_struct_out(const bids_counter_per_auction_window_group_by_4_key_struct& _key, uint64_t _id) 
+    bids_counter_per_auction_window_group_by_5_struct_out(const bids_counter_per_auction_window_group_by_5_key_struct& _key, uint64_t _id) 
         : auction_id(_key.auction_id), win_id(_id) {}
 
 };
 
 
 // ============================================================================
-// Struct: bids_counter_per_auction_select_3_struct_out
+// Struct: bids_counter_per_auction_select_4_struct_out
 // ============================================================================
-struct bids_counter_per_auction_select_3_struct_out {
+struct bids_counter_per_auction_select_4_struct_out {
     int64_t auction_id;
     int64_t bids_counter;
 
@@ -76,15 +76,26 @@ struct bids_counter_per_auction_select_3_struct_out {
 
 
 // ============================================================================
-// Struct: max_bid_count_window_group_by_7_struct_out
+// Struct: bids_counter_per_auction_query_4_select_3_struct_out
 // ============================================================================
-struct max_bid_count_window_group_by_7_struct_out {
+struct bids_counter_per_auction_query_4_select_3_struct_out {
+    int64_t auction_id;
+    int64_t maxxxxxx;
+
+
+};
+
+
+// ============================================================================
+// Struct: max_bid_count_window_group_by_8_struct_out
+// ============================================================================
+struct max_bid_count_window_group_by_8_struct_out {
     int64_t MAX_bids_counter = std::numeric_limits<int64_t>::lowest(); 
     uint64_t win_id = 0; 
 
-    max_bid_count_window_group_by_7_struct_out() = default;
+    max_bid_count_window_group_by_8_struct_out() = default;
 
-    max_bid_count_window_group_by_7_struct_out(uint64_t _id) 
+    max_bid_count_window_group_by_8_struct_out(uint64_t _id) 
         : win_id(_id) {}
 
 
@@ -92,23 +103,23 @@ struct max_bid_count_window_group_by_7_struct_out {
 
 
 // ============================================================================
-// Struct: max_bid_count_select_6_struct_out
+// Struct: max_bid_count_select_7_struct_out
 // ============================================================================
-struct max_bid_count_select_6_struct_out {
-    int64_t bids_counter;
+struct max_bid_count_select_7_struct_out {
+    int64_t maxxxxxx;
 
 
-    bool operator==(const max_bid_count_select_6_struct_out& other) const {
-        return bids_counter == other.bids_counter;
+    bool operator==(const max_bid_count_select_7_struct_out& other) const {
+        return maxxxxxx == other.maxxxxxx;
     }
 };
 
 namespace std {
     template<>
-    struct hash<max_bid_count_select_6_struct_out> {
-        size_t operator()(const max_bid_count_select_6_struct_out& k) const {
+    struct hash<max_bid_count_select_7_struct_out> {
+        size_t operator()(const max_bid_count_select_7_struct_out& k) const {
             size_t h = 0;
-            h ^= std::hash<int64_t>{}(k.bids_counter) + 0x9e3779b9 + (h << 6) + (h >> 2);
+            h ^= std::hash<int64_t>{}(k.maxxxxxx) + 0x9e3779b9 + (h << 6) + (h >> 2);
             return h;
         }
     };
