@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("dol_to_eur_from_2")
     .withHeader()
-    .withParallelism(2, 134217728ULL)
+    .withParallelism(4, 67108864ULL)
     .withOrderedEventTime(dol_to_eur_epoch)
     .build();
 
@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_2_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto sink_3_op = Table_Sink_Builder<dol_to_eur_select_1_struct_out>("dol_to_eur",
@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
 }
 )
     .withName("dol_to_eur_sink_3")
-    .withParallelism(2)
+    .withParallelism(4)
     .withHeader("auction_id,price_eur,bidder,bid_dateTime")
     .build();
 

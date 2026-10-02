@@ -48,8 +48,6 @@ class Sink_Functor {
                 return;
             }
 
-            std::cout << "[SINK] File " << actual_filename << " aperto." << std::endl;
-
             if (!header.empty()) {
                 *out_file << header << "\n";
             }
@@ -82,13 +80,13 @@ class Sink_Functor {
                     out_file->flush();
                     out_file->close();
                 }
-                std::cout << "[SINK" << ctx.getReplicaIndex() << "] File " << actual_filename << " completato e chiuso." << std::endl;
 
-                std::cout << "[SINK_METRICS] sink=" << actual_filename 
-                          << " replica=" << ctx.getReplicaIndex() 
-                          << " start_us=" << t_start 
-                          << " stop_us=" << t_stop 
-                          << " tuples=" << emitted_tuples << std::endl;
+            std::cout << "[SINK_METRICS] {\"sink\": \"" << actual_filename 
+                    << "\", \"replica\": " << ctx.getReplicaIndex() 
+                    << ", \"start_us\": " << t_start 
+                    << ", \"stop_us\": " << t_stop 
+                    << ", \"tuples\": " << emitted_tuples 
+                    << "}" << std::endl;
 
                 return;
             }

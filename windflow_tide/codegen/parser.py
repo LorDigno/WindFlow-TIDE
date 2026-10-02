@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from typing import Dict, List, Any, Set
 from dataclasses import dataclass
-from windflow_table_api import OpType
+from windflow_tide import OpType
 from .operation_nodes import OpNodeFactory, OpNode
 
 @dataclass

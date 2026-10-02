@@ -97,8 +97,6 @@ class Source_Functor {
                 return;
             }
 
-            std::cout << "[SRC" << ctx.getReplicaIndex() << "] File " << file_path << " aperto." << std::endl;
-
             //recupero il vector di split di questa replica
             auto it = splits_map.find(replica_id);
             if (it == splits_map.end()){
@@ -170,13 +168,12 @@ class Source_Functor {
 
             file.close();
 
-            std::cout << "[SRC" << ctx.getReplicaIndex() << "] File " << file_path << " parsing terminato." << std::endl;
-
-            std::cout << "[SRC_METRICS] source=" << file_path 
-                    << " replica=" << replica_id 
-                    << " start_us=" << t_start
-                    << " stop_us=" << t_stop
-                    << " tuples=" << emitted_tuples << std::endl;
+            std::cout << "[SRC_METRICS] {\"source\": \"" << file_path 
+                << "\", \"replica\": " << replica_id 
+                << ", \"start_us\": " << t_start
+                << ", \"stop_us\": " << t_stop
+                << ", \"tuples\": " << emitted_tuples 
+                << "}" << std::endl;
         }
 };
 

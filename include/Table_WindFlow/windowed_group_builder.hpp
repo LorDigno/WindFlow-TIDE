@@ -19,13 +19,9 @@ class Windowed_Group_Functor{
             : agg_func(func) {} 
 
         //metodo chiamato dalla keyed_windows
-        void operator()(const wf::Iterable<InputT> &win, OutputT &out){
-            //la trasformazione è racchiusa nella lambda.
-            //il builder non fa altro che cambiare lo stato tramite la lambda.
-            for(const InputT &input : win){
-                agg_func(input, out);
-            }
-        } 
+        void operator()(const InputT& in, OutputT& out ){
+            agg_func(in, out);
+        }
 };
 
 enum class WindowType {TIME_BASED, COUNT_BASED };

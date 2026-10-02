@@ -1,8 +1,8 @@
-from windflow_table_api import *
+from windflow_tide import *
 from pathlib import Path
 
 env = TableEnvironment(
-    include_dir= Path("../../include"),
+    include_dir= Path("../include"),
     par= 2, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
@@ -21,7 +21,7 @@ bid_schema = (SchemaBuilder()
 )
 
 bid_config = InputFileConfiguration(
-    path = Path("../../nexmark_datasets/70m_bid.csv"),
+    path = Path("../nexmark_datasets/70m_bid.csv"),
     format = FileFormat.CSV,
     schema = bid_schema,
     has_header = True,
@@ -49,4 +49,4 @@ q2 = (bid
     .select("auction_id", "price")
 )
 
-env.execute(q2, rexecute=True, output_dir="./filter_projection")
+env.execute(q2, output_dir="./query2/filter_projection")

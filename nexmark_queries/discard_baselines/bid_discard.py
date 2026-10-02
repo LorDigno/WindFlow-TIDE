@@ -1,4 +1,4 @@
-from windflow_table_api import *
+from windflow_tide import *
 from pathlib import Path
 
 env = TableEnvironment(

@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Any, Dict, Optional, Union
 from .durations import Duration
-from windflow_table_api import WindowType, WindowKind
+from windflow_tide import WindowType, WindowKind
 
 class Window:
     """

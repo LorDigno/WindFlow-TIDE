@@ -1,7 +1,7 @@
 # windflow_table_api/runtime/executor.py
 from pathlib import Path
 import subprocess
-from windflow_table_api.api.job_handle import JobHandle
+from windflow_tide.api.job_handle import JobHandle
 
 from .cmake_manager import CMakeManager
 from .compiler import CppCompiler

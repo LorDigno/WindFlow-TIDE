@@ -245,8 +245,8 @@ class TableEnvironment:
         Rende un oggetto JobHandle per il monitoraggio. 
         """
         #lazy import per evitare import circolari
-        from windflow_table_api.runtime import Executor
-        from windflow_table_api.codegen import generate_code
+        from windflow_tide.runtime import Executor
+        from windflow_tide.codegen import generate_code
 
         #log
         print(f"[ENV] Starting JsonGeneration for {query.table_id}")

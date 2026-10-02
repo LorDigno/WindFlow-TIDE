@@ -1,6 +1,6 @@
 from typing import Any, List, Optional
 from jinja2 import Environment
-from windflow_table_api import WindowType
+from windflow_tide import WindowType
 
 
 class BuilderGenerator:
