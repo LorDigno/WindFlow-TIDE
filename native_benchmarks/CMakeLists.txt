@@ -30,3 +30,19 @@ target_link_libraries(specific_id PRIVATE Threads::Threads pthread)
 # --- Target per la Query 3 (selling_in_states) ---
 add_executable(selling_in_states query3.cpp)
 target_link_libraries(selling_in_states PRIVATE Threads::Threads pthread)
+
+# --- Target per la Query 9 (winning) ---
+add_executable(winning query9.cpp)
+target_link_libraries(winning PRIVATE Threads::Threads pthread)
+add_executable(winning_fat query9fat.cpp)
+target_link_libraries(winning_fat PRIVATE Threads::Threads pthread)
+
+# --- Target per la Query 12 (ingress) ---
+add_executable(ingress query12.cpp)
+target_link_libraries(ingress PRIVATE Threads::Threads pthread)
+add_executable(ingress_fat query12fat.cpp)
+target_link_libraries(ingress_fat PRIVATE Threads::Threads pthread)
+
+# --- Target per la Query 20 (enriched) ---
+add_executable(enriched query20.cpp)
+target_link_libraries(enriched PRIVATE Threads::Threads pthread)
