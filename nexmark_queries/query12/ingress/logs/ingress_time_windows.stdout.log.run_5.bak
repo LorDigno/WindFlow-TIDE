@@ -1,0 +1,15 @@
+[32mWindFlow Status Message: PipeGraph [ingress_time_windows] is running with 16 threads[0m
+--> DEFAULT (out-of-order) mode [32menabled[0m
+--> INGRESS_TIME policy [32menabled[0m
+--> Backpressure [31mdisabled[0m
+--> Non-blocking queues [32menabled[0m
+--> Pinning of threads [32menabled[0m
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_bid.csv", "replica": 2, "start_us": 52191610707429, "stop_us": 52191628300840, "tuples": 6771547}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_bid.csv", "replica": 1, "start_us": 52191610707239, "stop_us": 52191628399341, "tuples": 6927227}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_bid.csv", "replica": 3, "start_us": 52191610707634, "stop_us": 52191628410733, "tuples": 6769933}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_bid.csv", "replica": 0, "start_us": 52191610707149, "stop_us": 52191628664344, "tuples": 7131293}
+[SINK_METRICS] {"sink": "ingress_time_windows_output2.csv", "replica": 2, "start_us": 52191611710104, "stop_us": 52191628735724, "tuples": 1416513}
+[SINK_METRICS] {"sink": "ingress_time_windows_output1.csv", "replica": [SINK_METRICS] {"sink": "ingress_time_windows_output3.csv1[SINK_METRICS] {"sink": "ingress_time_windows_output0.csv", "replica": , "start_us": 52191611710448, "stop_us": ", "replica": 521916287365053, "tuples": , "start_us": 1416621}
+52191611710190, "stop_us": 52191628736735, "tuples": 1416674}
+0, "start_us": 52191611710562, "stop_us": 52191628737324, "tuples": 1416708}
+[32mWindFlow Status Message: PipeGraph [ingress_time_windows] executed successfully[0m

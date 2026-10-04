@@ -1,0 +1,19 @@
+[32mWindFlow Status Message: PipeGraph [selling_in_states] is running with 40 threads[0m
+--> DEFAULT (out-of-order) mode [32menabled[0m
+--> EVENT_TIME policy [32menabled[0m
+--> Backpressure [31mdisabled[0m
+--> Non-blocking queues [32menabled[0m
+--> Pinning of threads [32menabled[0m
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 3, "start_us": 52164155558952, "stop_us": 52164156814724, "tuples": 304337}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 2, "start_us": 52164155558526, "stop_us": 52164157067564, "tuples": 364949}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 1, "start_us": 52164155558160, "stop_us": 52164157083608, "tuples": 365122}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 0, "start_us": 52164155557795, "stop_us": 52164157305532, "tuples": 365592}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 2, "start_us": 52164155560843, "stop_us": 52164158377493, "tuples": 1036210}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 1, "start_us": 52164155560076, "stop_us": 52164158471345, "tuples": 1037444}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 3, "start_us": 52164155561278, "stop_us": 52164159182973, "tuples": 1035497}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 0, "start_us": 52164155559494, "stop_us": 52164160010333, "tuples": 1090849}
+[SINK_METRICS] {"sink": "selling_in_states_output0.csv", "replica": 0, "start_us": 52164155562489, "stop_us": 52164160010462, "tuples": 26108}
+[SINK_METRICS] {"sink": "selling_in_states_output3.csv", "replica": 3, "start_us": 52164155564352, "stop_us": 52164160010476, "tuples": 26615}
+[SINK_METRICS] {"sink": "selling_in_states_output2.csv", "replica": 2, "start_us": 52164155563585, "stop_us": 52164160010508, "tuples": 26004}
+[SINK_METRICS] {"sink": "selling_in_states_output1.csv", "replica": 1, "start_us": 52164155567284, "stop_us": 52164160010460, "tuples": 341929}
+[32mWindFlow Status Message: PipeGraph [selling_in_states] executed successfully[0m

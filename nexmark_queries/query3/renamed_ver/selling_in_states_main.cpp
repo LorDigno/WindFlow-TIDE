@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("selling_in_states_from_4")
     .withHeader()
-    .withParallelism(2, 16777216ULL)
+    .withParallelism(4, 16777216ULL)
     .withOrderedEventTime(selling_in_states_epoch)
     .build();
 
@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("selling_in_states_where_3")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto from_3_op = Table_Source_Builder<source_auction_source_query_3_from_7>( "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv",
@@ -99,7 +99,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("auction_source_query_3_from_7")
     .withHeader()
-    .withParallelism(2, 8388608ULL)
+    .withParallelism(4, 16777216ULL)
     .withOrderedEventTime(selling_in_states_epoch)
     .build();
 
@@ -109,7 +109,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("auction_source_query_3_where_6")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto select_5_op = Select_Builder<source_auction_source_query_3_from_7, auction_source_query_3_select_5_struct_out>(
@@ -128,7 +128,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_5_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto left_unifier_6_op = Select_Builder<source_selling_in_states_from_4, source_selling_in_states_from_4_unified_auction_source_query_3_select_5_struct_out>(
@@ -146,7 +146,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("left_unifier_6_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto right_unifier_7_op = Select_Builder<auction_source_query_3_select_5_struct_out, source_selling_in_states_from_4_unified_auction_source_query_3_select_5_struct_out>(
@@ -165,7 +165,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("right_unifier_7_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto join_8_op = Table_Interval_Join_Builder<source_selling_in_states_from_4_unified_auction_source_query_3_select_5_struct_out, source_selling_in_states_from_4_unified_auction_source_query_3_select_5_struct_out, selling_in_states_join_interval_2_key_struct>(
@@ -194,7 +194,7 @@ int main(int argc, char* argv[]) {
     2678400000000
 )
     .withName("selling_in_states_join_interval_2")
-    .withParallelism(2)
+    .withParallelism(4)
     .withKeyBy([](const source_selling_in_states_from_4_unified_auction_source_query_3_select_5_struct_out& in) -> selling_in_states_join_interval_2_key_struct {
     selling_in_states_join_interval_2_key_struct out;
     out.person_id = in.person_id;
@@ -214,7 +214,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_9_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto sink_10_op = Table_Sink_Builder<selling_in_states_select_1_struct_out>("selling_in_states",
@@ -230,7 +230,7 @@ int main(int argc, char* argv[]) {
 }
 )
     .withName("selling_in_states_sink_8")
-    .withParallelism(2)
+    .withParallelism(4)
     .withHeader("name,city,state,auction_id")
     .build();
 

@@ -2,8 +2,8 @@ from windflow_tide import *
 from pathlib import Path
 
 env = TableEnvironment(
-    include_dir= Path("../../include"),
-    par= 2, 
+    include_dir= Path("../include"),
+    par= 4, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )
@@ -23,7 +23,7 @@ auction_schema = (SchemaBuilder()
 )
 
 auction_config = InputFileConfiguration(
-    path = Path("../../nexmark_datasets/30m_auction.csv"),
+    path = Path("../nexmark_datasets/30m_auction.csv"),
     format= FileFormat.CSV,
     schema= auction_schema,
     has_header= True,
@@ -47,7 +47,7 @@ bid_schema = (SchemaBuilder()
 )
 
 bid_config = InputFileConfiguration(
-    path = Path("../../nexmark_datasets/30m_bid.csv"),
+    path = Path("../nexmark_datasets/30m_bid.csv"),
     format = FileFormat.CSV,
     schema = bid_schema,
     has_header = True,
@@ -76,4 +76,7 @@ q9 = (bid
     .select("auction_id", max("price").alias("winning_price"))
 )
 
-env.execute(q9, output_dir= "./winning")
+handle = env.execute(q9, output_dir= "./query9/winning")
+
+handle.wait()
+print("[HANDLE] Wait over")

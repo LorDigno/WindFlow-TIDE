@@ -2,8 +2,8 @@ from windflow_tide import *
 from pathlib import Path
 
 env = TableEnvironment(
-    include_dir= Path("../../include"),
-    par= 4, 
+    include_dir= Path("../include"),
+    par= 5, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )
@@ -23,13 +23,13 @@ auction_schema = (SchemaBuilder()
 )
 
 auction_config = InputFileConfiguration(
-    path = Path("../../nexmark_datasets/70m_auction.csv"),
+    path = Path("../nexmark_datasets/70m_auction.csv"),
     format= FileFormat.CSV,
     schema= auction_schema,
     has_header= True,
     time_col= "auction_dateTime",
     order= True,                        
-    split_size= SplitSize.megabytes(16)
+    split_size= SplitSize.megabytes(8)
 )
 
 auction = env.table_from_file(auction_config, "auction_source")
@@ -47,13 +47,13 @@ bid_schema = (SchemaBuilder()
 )
 
 bid_config = InputFileConfiguration(
-    path = Path("../../nexmark_datasets/70m_bid.csv"),
+    path = Path("../nexmark_datasets/70m_bid.csv"),
     format = FileFormat.CSV,
     schema = bid_schema,
     has_header = True,
     time_col = "bid_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.megabytes(64)
+    split_size= SplitSize.megabytes(32)
 )
 
 bid = env.table_from_file(bid_config, "bid_source")
@@ -78,4 +78,7 @@ q20 = (auction
     )
 )
 
-env.execute(q20, output_dir="./enriched")
+handle = env.execute(q20, output_dir="./query20/enriched")
+
+handle.wait()
+print("[HANDLE] Wait over")

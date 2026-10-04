@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("ingress_time_windows_from_3")
     .withHeader()
-    .withParallelism(5, 33554432ULL)
+    .withParallelism(4, 67108864ULL)
     .build();
 
     auto window_group_2_op = Windowed_Group_Builder<source_ingress_time_windows_from_3, ingress_time_windows_window_group_by_2_struct_out, ingress_time_windows_window_group_by_2_key_struct>(
@@ -55,7 +55,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("ingress_time_windows_window_group_by_2")
     .withTBWindow(1000000ULL, 1000000ULL)
-    .withParallelism(5)
+    .withParallelism(4)
     .withKeyBy([](const source_ingress_time_windows_from_3& in) -> ingress_time_windows_window_group_by_2_key_struct {
     ingress_time_windows_window_group_by_2_key_struct out;
     out.bidder = in.bidder;
@@ -73,7 +73,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_3_op")
-    .withParallelism(5)
+    .withParallelism(4)
     .build();
 
     auto sink_4_op = Table_Sink_Builder<ingress_time_windows_select_1_struct_out>("ingress_time_windows",
@@ -85,7 +85,7 @@ int main(int argc, char* argv[]) {
 }
 )
     .withName("ingress_time_windows_sink_4")
-    .withParallelism(5)
+    .withParallelism(4)
     .withHeader("bidder,processed")
     .build();
 

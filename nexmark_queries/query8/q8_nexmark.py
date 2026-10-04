@@ -2,8 +2,8 @@ from windflow_tide import *
 from pathlib import Path
 
 env = TableEnvironment(
-    include_dir= Path("../../include"),
-    par= 2, 
+    include_dir= Path("../include"),
+    par= 5, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )
@@ -23,7 +23,7 @@ auction_schema = (SchemaBuilder()
 )
 
 auction_config = InputFileConfiguration(
-    path = Path("../../nexmark_datasets/70m_auction.csv"),
+    path = Path("../nexmark_datasets/70m_auction.csv"),
     format= FileFormat.CSV,
     schema= auction_schema,
     has_header= True,
@@ -48,13 +48,13 @@ person_schema = (SchemaBuilder()
 )
 
 person_config = InputFileConfiguration(
-    path = Path("../../nexmark_datasets/70m_person.csv"),
+    path = Path("../nexmark_datasets/70m_person.csv"),
     format = FileFormat.CSV,
     schema = person_schema,
     has_header = True,
     time_col = "person_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.megabytes(16)
+    split_size= SplitSize.megabytes(8)
 )
 
 person = env.table_from_file(person_config, "person_source")
@@ -75,4 +75,7 @@ q8 = (person
     .select("person_id", "name", "auction_id", "reserve")
 )
 
-env.execute(q8, output_dir="./new_ones")
+handle = env.execute(q8, output_dir="./query8/new_ones")
+
+handle.wait()
+print("[HANDLE] Wait over")
