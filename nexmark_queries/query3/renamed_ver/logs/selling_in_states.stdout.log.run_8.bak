@@ -1,19 +1,13 @@
-[32mWindFlow Status Message: PipeGraph [selling_in_states] is running with 40 threads[0m
+[32mWindFlow Status Message: PipeGraph [selling_in_states] is running with 20 threads[0m
 --> DEFAULT (out-of-order) mode [32menabled[0m
 --> EVENT_TIME policy [32menabled[0m
 --> Backpressure [31mdisabled[0m
 --> Non-blocking queues [32menabled[0m
 --> Pinning of threads [32menabled[0m
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 3, "start_us": 52164113688094, "stop_us": 52164114900954, "tuples": 304337}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 2, "start_us": 52164113687757, "stop_us": 52164115142158, "tuples": 364949}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 1, "start_us": 52164113687404, "stop_us": 52164115160549, "tuples": 365122}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 0, "start_us": 52164113687204, "stop_us": 52164115378350, "tuples": 365592}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 2, "start_us": 52164113690089, "stop_us": 52164116392115, "tuples": 1036210}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 1, "start_us": 52164113689429, "stop_us": 52164116409905, "tuples": 1037444}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 3, "start_us": 52164113690567, "stop_us": 52164117146860, "tuples": 1035497}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 0, "start_us": 52164113688779, "stop_us": 52164117910087, "tuples": 1090849}
-[SINK_METRICS] {"sink": "selling_in_states_output0.csv", "replica": 0, "start_us": 52164113691830, "stop_us": 52164117910209, "tuples": 26108}
-[SINK_METRICS] {"sink": "selling_in_states_output3.csv", "replica": 3, "start_us": 52164113693618, "stop_us": 52164117910236, "tuples": 26615}
-[SINK_METRICS] {"sink": "selling_in_states_output2.csv", "replica": 2, "start_us": 52164113693279, "stop_us": 52164117910262, "tuples": 26004}
-[SINK_METRICS] {"sink": "selling_in_states_output1.csv", "replica": 1, "start_us": 52164113697419, "stop_us": 52164117910208, "tuples": 341929}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 1, "start_us": 52311705458393, "stop_us": 52311707267051, "tuples": 669459}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_person.csv", "replica": 0, "start_us": 52311705457942, "stop_us": 52311707454311, "tuples": 730541}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 0, "start_us": 52311705458587, "stop_us": 52311711135861, "tuples": 2126815}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 1, "start_us": 52311705459096, "stop_us": 52311711222220, "tuples": 2073185}
+[SINK_METRICS] {"sink": "selling_in_states_output0.csv", "replica": 0, "start_us": 52311705459995, "stop_us": 52311711222345, "tuples": 52112}
+[SINK_METRICS] {"sink": "selling_in_states_output1.csv", "replica": 1, "start_us": 52311705462292, "stop_us": 52311711222346, "tuples": 368544}
 [32mWindFlow Status Message: PipeGraph [selling_in_states] executed successfully[0m

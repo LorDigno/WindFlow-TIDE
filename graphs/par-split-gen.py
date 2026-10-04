@@ -4,7 +4,7 @@ import matplotlib.ticker as ticker
 import numpy as np
 
 # 1. Lettura dal dataset unito
-df = pd.read_csv('./TIDE-data/q2-bad.csv')
+df = pd.read_csv('./TIDE-data/q12-runs.csv')
 df['Config'] = 'PAR: ' + df['PAR'].astype(str) + '\nSPLIT: ' + df['SPLIT'].astype(str)
 
 # 2. Creazione della figura con 2 grafici affiancati
@@ -13,7 +13,7 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7))
 # --- PLOT A: Throughput ---
 bars_tp = ax1.bar(df['Config'], df['Throughput_tps'], color='#4C72B0', edgecolor='black')
 ax1.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
-ax1.set_xlabel('Configuration (parallelism and split-size)', fontsize=12)
+ax1.set_xlabel('Configuration (parallelism and bid split-size mb)', fontsize=12)
 ax1.set_ylabel('Throughput (Tuple/s)', fontsize=12)
 ax1.set_title('A) Throughput', fontsize=14, pad=15)
 
@@ -39,7 +39,7 @@ for i, (t, color) in enumerate(zip(threads, colors)):
         if h > 0:
             ax2.text(bar.get_x() + bar.get_width() / 2, h + 1.5, f"{int(h)}%", ha='center', va='bottom', fontsize=9, fontweight='bold', color='#333333')
 
-ax2.set_xlabel('Configuration (parallelism and split-size)', fontsize=12)
+ax2.set_xlabel('Configuration (parallelism and bid split-size mb)', fontsize=12)
 ax2.set_ylabel('Tuple at Sink %', fontsize=12)
 ax2.set_title('B) Data Skew by Threads', fontsize=14, pad=15)
 ax2.set_xticks(x)
@@ -50,5 +50,5 @@ ax2.legend(title='Replicas', bbox_to_anchor=(1.05, 1), loc='upper left')
 
 # 3. Ottimizzazione layout e salvataggio
 plt.tight_layout()
-plt.savefig('q2-graph.png', dpi=300)
+plt.savefig('q12-graph.png', dpi=300)
 plt.show()

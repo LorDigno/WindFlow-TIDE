@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("new_users_from_3")
     .withHeader()
-    .withParallelism(5, 8388608ULL)
+    .withParallelism(3, 8388608ULL)
     .withOrderedEventTime(new_users_epoch)
     .build();
 
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("auction_source_query_3_from_5")
     .withHeader()
-    .withParallelism(5, 8388608ULL)
+    .withParallelism(3, 8388608ULL)
     .withOrderedEventTime(new_users_epoch)
     .build();
 
@@ -110,7 +110,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_3_op")
-    .withParallelism(5)
+    .withParallelism(3)
     .build();
 
     auto left_unifier_4_op = Select_Builder<source_new_users_from_3, source_new_users_from_3_unified_auction_source_query_3_select_4_struct_out>(
@@ -128,7 +128,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("left_unifier_4_op")
-    .withParallelism(5)
+    .withParallelism(3)
     .build();
 
     auto right_unifier_5_op = Select_Builder<auction_source_query_3_select_4_struct_out, source_new_users_from_3_unified_auction_source_query_3_select_4_struct_out>(
@@ -147,7 +147,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("right_unifier_5_op")
-    .withParallelism(5)
+    .withParallelism(3)
     .build();
 
     auto join_6_op = Table_Interval_Join_Builder<source_new_users_from_3_unified_auction_source_query_3_select_4_struct_out, source_new_users_from_3_unified_auction_source_query_3_select_4_struct_out, new_users_join_interval_2_key_struct>(
@@ -176,7 +176,7 @@ int main(int argc, char* argv[]) {
     43200000000
 )
     .withName("new_users_join_interval_2")
-    .withParallelism(5)
+    .withParallelism(3)
     .withKeyBy([](const source_new_users_from_3_unified_auction_source_query_3_select_4_struct_out& in) -> new_users_join_interval_2_key_struct {
     new_users_join_interval_2_key_struct out;
     out.person_id = in.person_id;
@@ -196,7 +196,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_7_op")
-    .withParallelism(5)
+    .withParallelism(3)
     .build();
 
     auto sink_8_op = Table_Sink_Builder<new_users_select_1_struct_out>("new_users",
@@ -212,7 +212,7 @@ int main(int argc, char* argv[]) {
 }
 )
     .withName("new_users_sink_6")
-    .withParallelism(5)
+    .withParallelism(3)
     .withHeader("person_id,name,auction_id,reserve")
     .build();
 

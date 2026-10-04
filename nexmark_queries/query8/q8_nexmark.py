@@ -3,7 +3,7 @@ from pathlib import Path
 
 env = TableEnvironment(
     include_dir= Path("../include"),
-    par= 5, 
+    par= 3, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )

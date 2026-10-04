@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("auction_expanded_from_4")
     .withHeader()
-    .withParallelism(5, 8388608ULL)
+    .withParallelism(2, 8388608ULL)
     .withOrderedEventTime(auction_expanded_epoch)
     .build();
 
@@ -62,7 +62,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("auction_expanded_where_3")
-    .withParallelism(5)
+    .withParallelism(2)
     .build();
 
     auto from_3_op = Table_Source_Builder<source_auction_expanded_from_5>( "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv",
@@ -96,7 +96,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("auction_expanded_from_5")
     .withHeader()
-    .withParallelism(5, 33554432ULL)
+    .withParallelism(2, 134217728ULL)
     .withOrderedEventTime(auction_expanded_epoch)
     .build();
 
@@ -116,7 +116,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("left_unifier_4_op")
-    .withParallelism(5)
+    .withParallelism(2)
     .build();
 
     auto right_unifier_5_op = Select_Builder<source_auction_expanded_from_5, source_auction_expanded_from_4_unified_source_auction_expanded_from_5>(
@@ -133,7 +133,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("right_unifier_5_op")
-    .withParallelism(5)
+    .withParallelism(2)
     .build();
 
     auto join_6_op = Table_Interval_Join_Builder<source_auction_expanded_from_4_unified_source_auction_expanded_from_5, source_auction_expanded_from_4_unified_source_auction_expanded_from_5, auction_expanded_join_interval_2_key_struct>(
@@ -161,7 +161,7 @@ int main(int argc, char* argv[]) {
     43200000000
 )
     .withName("auction_expanded_join_interval_2")
-    .withParallelism(5)
+    .withParallelism(2)
     .withKeyBy([](const source_auction_expanded_from_4_unified_source_auction_expanded_from_5& in) -> auction_expanded_join_interval_2_key_struct {
     auction_expanded_join_interval_2_key_struct out;
     out.auction_id = in.auction_id;
@@ -205,7 +205,7 @@ int main(int argc, char* argv[]) {
 }
 )
     .withName("auction_expanded_sink_6")
-    .withParallelism(5)
+    .withParallelism(2)
     .withHeader("auction_id,item_name,description,initial_bid,reserve,auction_dateTime,expires,seller,category,bidder,price,channel,url,bid_dateTime,extra")
     .build();
 
