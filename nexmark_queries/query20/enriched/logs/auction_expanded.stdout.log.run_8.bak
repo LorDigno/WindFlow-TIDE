@@ -1,0 +1,22 @@
+[32mWindFlow Status Message: PipeGraph [auction_expanded] is running with 35 threads[0m
+--> DEFAULT (out-of-order) mode [32menabled[0m
+--> EVENT_TIME policy [32menabled[0m
+--> Backpressure [31mdisabled[0m
+--> Non-blocking queues [32menabled[0m
+--> Pinning of threads [32menabled[0m
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 4, "start_us": 52197932867698, "stop_us": 52197934988656, "tuples": 806340}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 2, "start_us": 52197932866471, "stop_us": 52197936352112, "tuples": 858253}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 3, "start_us": 52197932866778, "stop_us": 52197936390648, "tuples": 806156}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 0, "start_us": 52197932865993, "stop_us": 52197936533456, "tuples": 864823}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_auction.csv", "replica": 1, "start_us": 52197932866222, "stop_us": 52197936712721, "tuples": 864428}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 3, "start_us": 52197932869058, "stop_us": 52197966242370, "tuples": 12781698}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 0, "start_us": 52197932868193, "stop_us": 52197967046250, "tuples": 12962256}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 2, "start_us": 52197932868746, "stop_us": 52197967046250, "tuples": 12913974}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 1, "start_us": 52197932868492, "stop_us": 52197968396736, "tuples": 12960383}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 4, "start_us": 52197932869360, "stop_us": 52197988627587, "tuples": 12781689}
+[SINK_METRICS] {"sink": "auction_expanded_output2.csv", "replica": 2, "start_us": 52197932959540, "stop_us": 52197988627644, "tuples": 1280241}
+[SINK_METRICS] {"sink": "auction_expanded_output0.csv", "replica": 0, "start_us": 52197932957412, "stop_us": 52197988627647, "tuples": 1290340}
+[SINK_METRICS] {"sink": "auction_expanded_output1.csv", "replica": 1, "start_us": 52197932945689, "stop_us": 52197988627649, "tuples": 1286003}
+[SINK_METRICS] {"sink": "auction_expanded_output3.csv", "replica": 3, "start_us": 52197932947755, "stop_us": 52197988627651, "tuples": 1290728}
+[SINK_METRICS] {"sink": "auction_expanded_output4.csv", "replica": 4, "start_us": 52197933453728, "stop_us": 52198048281575, "tuples": 7724667}
+[32mWindFlow Status Message: PipeGraph [auction_expanded] executed successfully[0m

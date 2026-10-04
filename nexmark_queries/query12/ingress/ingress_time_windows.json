@@ -84,7 +84,7 @@
                             "time_col": null,
                             "order": true,
                             "delay": null,
-                            "split_size": 33554432
+                            "split_size": 67108864
                         }
                     }
                 ]

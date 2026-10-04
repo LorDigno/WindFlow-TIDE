@@ -1,15 +1,13 @@
-[32mWindFlow Status Message: PipeGraph [dol_to_eur] is running with 12 threads[0m
+[32mWindFlow Status Message: PipeGraph [dol_to_eur] is running with 9 threads[0m
 --> DEFAULT (out-of-order) mode [32menabled[0m
 --> EVENT_TIME policy [32menabled[0m
 --> Backpressure [31mdisabled[0m
 --> Non-blocking queues [32menabled[0m
 --> Pinning of threads [32menabled[0m
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 3, "start_us": 52152363759843, "stop_us": 52152403319060, "tuples": 15976084}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 1, "start_us": 52152363759078, "stop_us": 52152403780800, "tuples": 16109572}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 2, "start_us": 52152363759302, "stop_us": 52152403934533, "tuples": 15977292}
-[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 0, "start_us": 52152363758645, "stop_us": 52152404769176, "tuples": 16337052}
-[SINK_METRICS] {"sink": "dol_to_eur_output3.csv", "replica": 3, "start_us": 52152363892855, "stop_us": 52152403319255, "tuples": 15976084}
-[SINK_METRICS] {"sink": "dol_to_eur_output2.csv", "replica": 2, "start_us": 52152363894286, "stop_us": 52152403934587, "tuples": 15977292}
-[SINK_METRICS] {"sink": "dol_to_eur_output1.csv", "replica": 1, "start_us": 52152363895784, "stop_us": 52152403780872, "tuples": 16109572}
-[SINK_METRICS] {"sink": "dol_to_eur_output0.csv", "replica": 0, "start_us": 52152363895613, "stop_us": 52152404769243, "tuples": 16337052}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 1, "start_us": 52158346024499, "stop_us": 52158399716752, "tuples": 21434521}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 2, "start_us": 52158346024909, "stop_us": 52158399792951, "tuples": 21303061}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/70m_bid.csv", "replica": 0, "start_us": 52158346024117, "stop_us": 52158400448224, "tuples": 21662418}
+[SINK_METRICS] {"sink": "dol_to_eur_output1.csv", "replica": 1, "start_us": 52158346218139, "stop_us": 52158399716836, "tuples": 21434521}
+[SINK_METRICS] {"sink": "dol_to_eur_output2.csv", "replica": 2, "start_us": 52158346217370, "stop_us": 52158399792986, "tuples": 21303061}
+[SINK_METRICS] {"sink": "dol_to_eur_output0.csv", "replica": 0, "start_us": 52158346219800, "stop_us": 52158400448301, "tuples": 21662418}
 [32mWindFlow Status Message: PipeGraph [dol_to_eur] executed successfully[0m

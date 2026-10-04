@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "windflow-table-api"
+name = "windflow-tide"
 version = "0.2.0"
-description = "Python DSL e Table API per WindFlow"
+description = "Python DSL for WindFlow"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
@@ -13,4 +13,4 @@ dependencies = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["windflow_table_api*"]
+include = ["windflow_tide*"]

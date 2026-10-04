@@ -2,8 +2,8 @@ from windflow_tide import *
 from pathlib import Path
 
 env = TableEnvironment(
-    include_dir= Path("../../include"),
-    par= 5, 
+    include_dir= Path("../include"),
+    par= 4, 
     policy=TimePolicy.INGRESS_TIME,
     #time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )
@@ -21,13 +21,13 @@ bid_schema = (SchemaBuilder()
 )
 
 bid_config = InputFileConfiguration(
-    path = Path("../../nexmark_datasets/30m_bid.csv"),
+    path = Path("../nexmark_datasets/30m_bid.csv"),
     format = FileFormat.CSV,
     schema = bid_schema,
     has_header = True,
     #time_col = "bid_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.megabytes(32)
+    split_size= SplitSize.megabytes(64)
 )
 
 bid = env.table_from_file(bid_config, "bid_source")
@@ -47,5 +47,7 @@ q12 = (bid
     .select("bidder", count().alias("processed"))
 )
 
-env.execute(q12, output_dir= "./ingress")
+handle = env.execute(q12, output_dir= "./query12/ingress")
 
+handle.wait()
+print("[HANDLE] Wait over")

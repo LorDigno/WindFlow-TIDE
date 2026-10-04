@@ -1,0 +1,19 @@
+[32mWindFlow Status Message: PipeGraph [winning_bids] is running with 32 threads[0m
+--> DEFAULT (out-of-order) mode [32menabled[0m
+--> EVENT_TIME policy [32menabled[0m
+--> Backpressure [31mdisabled[0m
+--> Non-blocking queues [32menabled[0m
+--> Pinning of threads [32menabled[0m
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_auction.csv", "replica": 3, "start_us": 52181424453523, "stop_us": 52181425564935, "tuples": 409735}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_auction.csv", "replica": 2, "start_us": 52181424453262, "stop_us": 52181425690644, "tuples": 462804}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_auction.csv", "replica": 1, "start_us": 52181424452731, "stop_us": 52181425713594, "tuples": 463043}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_auction.csv", "replica": 0, "start_us": 52181424452284, "stop_us": 52181425739228, "tuples": 464418}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_bid.csv", "replica": 2, "start_us": 52181424451198, "stop_us": 52181451705617, "tuples": 6771547}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_bid.csv", "replica": 3, "start_us": 52181424451870, "stop_us": 52181451745616, "tuples": 6769933}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_bid.csv", "replica": 0, "start_us": 52181424450381, "stop_us": 52181452782927, "tuples": 7131293}
+[SRC_METRICS] {"source": "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/30m_bid.csv", "replica": 1, "start_us": 52181424450643, "stop_us": 52181455225159, "tuples": 6927227}
+[SINK_METRICS] {"sink": "winning_bids_output1.csv", "replica": 1, "start_us": 52181433360624, "stop_us": 52181480556878, "tuples": 3344611}
+[SINK_METRICS] {"sink": "winning_bids_output0.csv", "replica": 0, "start_us": 52181433457357, "stop_us": 52181481059682, "tuples": 3335310}
+[SINK_METRICS] {"sink": "winning_bids_output2.csv", "replica": 2, "start_us": 52181433410395, "stop_us": 52181481064594, "tuples": 3335160}
+[SINK_METRICS] {"sink": "winning_bids_output3.csv", "replica": 3, "start_us": 52181433406758, "stop_us": 52181481074712, "tuples": 3331327}
+[32mWindFlow Status Message: PipeGraph [winning_bids] executed successfully[0m

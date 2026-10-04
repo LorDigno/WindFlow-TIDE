@@ -124,7 +124,7 @@
                             "time_col": "person_dateTime",
                             "order": true,
                             "delay": null,
-                            "split_size": 16777216
+                            "split_size": 8388608
                         }
                     },
                     {

@@ -45,8 +45,8 @@ current_max = (bid
 )
 
 interval = Interval(
-    Duration.hours(-2),
-    Duration.hours(2)
+    Duration.hours(0),
+    Duration.hours(1)
 )
 
 q7 = (bid

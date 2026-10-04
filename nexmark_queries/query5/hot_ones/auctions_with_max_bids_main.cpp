@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("bids_counter_per_auction_from_6")
     .withHeader()
-    .withParallelism(3, 33554432ULL)
+    .withParallelism(3, 67108864ULL)
     .withOrderedEventTime(auctions_with_max_bids_epoch)
     .build();
 
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("bids_counter_per_auction_from_6")
     .withHeader()
-    .withParallelism(3, 33554432ULL)
+    .withParallelism(3, 67108864ULL)
     .withOrderedEventTime(auctions_with_max_bids_epoch)
     .build();
 

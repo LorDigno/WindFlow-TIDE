@@ -3,7 +3,7 @@ from pathlib import Path
 
 env = TableEnvironment(
     include_dir= Path("../include"),
-    par= 2, 
+    par= 5, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )
@@ -27,7 +27,7 @@ bid_config = InputFileConfiguration(
     has_header = True,
     time_col = "bid_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.megabytes(128)
+    split_size= SplitSize.megabytes(32)
 )
 
 bid = env.table_from_file(bid_config, "bid_source")
@@ -49,4 +49,7 @@ q2 = (bid
     .select("auction_id", "price")
 )
 
-env.execute(q2, output_dir="./query2/filter_projection")
+handle = env.execute(q2, output_dir="./query2/filter_projection")
+handle.wait()
+
+print("[HANDLE] Wait over")

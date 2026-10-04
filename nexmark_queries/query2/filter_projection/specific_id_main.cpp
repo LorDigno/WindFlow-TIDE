@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("specific_id_from_3")
     .withHeader()
-    .withParallelism(2, 134217728ULL)
+    .withParallelism(5, 33554432ULL)
     .withOrderedEventTime(specific_id_epoch)
     .build();
 
@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("specific_id_where_2")
-    .withParallelism(2)
+    .withParallelism(5)
     .build();
 
     auto select_3_op = Select_Builder<source_specific_id_from_3, specific_id_select_1_struct_out>(
@@ -68,7 +68,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_3_op")
-    .withParallelism(2)
+    .withParallelism(5)
     .build();
 
     auto sink_4_op = Table_Sink_Builder<specific_id_select_1_struct_out>("specific_id",
@@ -80,7 +80,7 @@ int main(int argc, char* argv[]) {
 }
 )
     .withName("specific_id_sink_4")
-    .withParallelism(2)
+    .withParallelism(5)
     .withHeader("auction_id,price")
     .build();
 
