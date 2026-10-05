@@ -41,7 +41,7 @@
                 ],
                 "attachment": {
                     "lower_bound": {
-                        "value": -1,
+                        "value": 0,
                         "unit": "HOURS"
                     },
                     "upper_bound": {

@@ -3,7 +3,7 @@ from pathlib import Path
 
 env = TableEnvironment(
     include_dir= Path("../include"),
-    par= 3, 
+    par= 2, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )
@@ -27,7 +27,7 @@ bid_config = InputFileConfiguration(
     has_header = True,
     time_col = "bid_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.megabytes(64)
+    split_size= SplitSize.megabytes(32)
 )
 
 bid = env.table_from_file(bid_config, "bid_source")
@@ -61,7 +61,7 @@ most_requested = (bids_per_auction
 
 #intervallo utilizzato per la join, necessario per il disallineamento dei ts
 join_interval = Interval(
-    Duration.hours(-1),
+    Duration.hours(0),
     Duration.hours(13)
 )
 
@@ -73,4 +73,7 @@ hot_auctions = (bids_per_auction
     .select("auction_id", "maxxxxxx")
 )
 
-env.execute(hot_auctions, output_dir="./query5/hot_ones")
+handle = env.execute(hot_auctions, output_dir="./query5/hot_ones")
+handle.wait()
+
+print("[HANDLE] Wait over")

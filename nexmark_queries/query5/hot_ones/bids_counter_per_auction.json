@@ -84,7 +84,7 @@
                             "time_col": "bid_dateTime",
                             "order": true,
                             "delay": null,
-                            "split_size": 67108864
+                            "split_size": 33554432
                         }
                     }
                 ]

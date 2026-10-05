@@ -3,7 +3,7 @@ from pathlib import Path
 
 env = TableEnvironment(
     include_dir= Path("../include"),
-    par= 2, 
+    par= 4, 
     policy=TimePolicy.EVENT_TIME,
     time_baseline=("2026-09-01T00:00:00.000Z", TimeFormats.ISO8601)
 )
@@ -29,7 +29,7 @@ auction_config = InputFileConfiguration(
     has_header= True,
     time_col= "auction_dateTime",
     order= True,                        
-    split_size= SplitSize.megabytes(8)
+    split_size= SplitSize.megabytes(16)
 )
 
 auction = env.table_from_file(auction_config, "auction_source")
@@ -53,7 +53,7 @@ bid_config = InputFileConfiguration(
     has_header = True,
     time_col = "bid_dateTime",
     order = True,                                           # da vedere
-    split_size= SplitSize.megabytes(128)
+    split_size= SplitSize.megabytes(64)
 )
 
 bid = env.table_from_file(bid_config, "bid_source")

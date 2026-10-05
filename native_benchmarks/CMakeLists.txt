@@ -24,25 +24,27 @@ include_directories(
 )
 
 # --- Target per la Query 2 (specific_id) ---
-add_executable(specific_id query2.cpp)
+add_executable(specific_id ./q2/query2.cpp)
 target_link_libraries(specific_id PRIVATE Threads::Threads pthread)
 
 # --- Target per la Query 3 (selling_in_states) ---
-add_executable(selling_in_states query3.cpp)
-target_link_libraries(selling_in_states PRIVATE Threads::Threads pthread)
+add_executable(par2_selling_in_states ./q3/query3.cpp)
+target_link_libraries(par2_selling_in_states PRIVATE Threads::Threads pthread)
+add_executable(par3_q3_ver2 ./q3/q3_ver2.cpp)
+target_link_libraries(par3_q3_ver2 PRIVATE Threads::Threads pthread)
 
 # --- Target per la Query 9 (winning) ---
-add_executable(winning query9.cpp)
-target_link_libraries(winning PRIVATE Threads::Threads pthread)
-add_executable(winning_fat query9fat.cpp)
-target_link_libraries(winning_fat PRIVATE Threads::Threads pthread)
+add_executable(par2_winning ./q9/query9.cpp)
+target_link_libraries(par2_winning PRIVATE Threads::Threads pthread)
+add_executable(par3_winning_fat ./q9/query9fat.cpp)
+target_link_libraries(par3_winning_fat PRIVATE Threads::Threads pthread)
 
 # --- Target per la Query 12 (ingress) ---
-add_executable(ingress query12.cpp)
+add_executable(ingress ./q12/query12.cpp)
 target_link_libraries(ingress PRIVATE Threads::Threads pthread)
-add_executable(ingress_fat query12fat.cpp)
+add_executable(ingress_fat ./q12/query12fat.cpp)
 target_link_libraries(ingress_fat PRIVATE Threads::Threads pthread)
 
 # --- Target per la Query 20 (enriched) ---
-add_executable(enriched query20.cpp)
-target_link_libraries(enriched PRIVATE Threads::Threads pthread)
+add_executable(par3_enriched ./q20/query20.cpp)
+target_link_libraries(par3_enriched PRIVATE Threads::Threads pthread)
