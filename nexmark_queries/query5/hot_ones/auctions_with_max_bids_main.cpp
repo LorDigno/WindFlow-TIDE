@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("bids_counter_per_auction_from_6")
     .withHeader()
-    .withParallelism(2, 33554432ULL)
+    .withParallelism(4, 67108864ULL)
     .withOrderedEventTime(auctions_with_max_bids_epoch)
     .build();
 
@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("bids_counter_per_auction_window_group_by_5")
     .withTBWindow(43200000000ULL, 43200000000ULL)
-    .withParallelism(2)
+    .withParallelism(4)
     .withKeyBy([](const source_bids_counter_per_auction_from_6& in) -> bids_counter_per_auction_window_group_by_5_key_struct {
     bids_counter_per_auction_window_group_by_5_key_struct out;
     out.auction_id = in.auction_id;
@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_3_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto select_4_op = Select_Builder<bids_counter_per_auction_select_4_struct_out, bids_counter_per_auction_query_4_select_3_struct_out>(
@@ -89,7 +89,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_4_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto from_5_op = Table_Source_Builder<source_bids_counter_per_auction_from_6>( "/disc1/homes/lorenzoni/WindFlow-Table-API/nexmark_datasets/10m_bid.csv",
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("bids_counter_per_auction_from_6")
     .withHeader()
-    .withParallelism(2, 33554432ULL)
+    .withParallelism(4, 67108864ULL)
     .withOrderedEventTime(auctions_with_max_bids_epoch)
     .build();
 
@@ -136,7 +136,7 @@ int main(int argc, char* argv[]) {
 )
     .withName("bids_counter_per_auction_window_group_by_5")
     .withTBWindow(43200000000ULL, 43200000000ULL)
-    .withParallelism(2)
+    .withParallelism(4)
     .withKeyBy([](const source_bids_counter_per_auction_from_6& in) -> bids_counter_per_auction_window_group_by_5_key_struct {
     bids_counter_per_auction_window_group_by_5_key_struct out;
     out.auction_id = in.auction_id;
@@ -154,7 +154,7 @@ int main(int argc, char* argv[]) {
 }
     )
     .withName("select_7_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto window_group_8_op = Windowed_Group_Builder<bids_counter_per_auction_select_4_struct_out, max_bid_count_window_group_by_8_struct_out>(
@@ -179,7 +179,7 @@ if( MAX_bids_counter_tmp > out.MAX_bids_counter ){
 }
     )
     .withName("select_9_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto left_unifier_10_op = Select_Builder<bids_counter_per_auction_query_4_select_3_struct_out, bids_counter_per_auction_query_4_select_3_struct_out>(
@@ -191,7 +191,7 @@ if( MAX_bids_counter_tmp > out.MAX_bids_counter ){
 }
     )
     .withName("left_unifier_10_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto right_unifier_11_op = Select_Builder<max_bid_count_select_7_struct_out, bids_counter_per_auction_query_4_select_3_struct_out>(
@@ -202,7 +202,7 @@ if( MAX_bids_counter_tmp > out.MAX_bids_counter ){
 }
     )
     .withName("right_unifier_11_op")
-    .withParallelism(2)
+    .withParallelism(4)
     .build();
 
     auto join_12_op = Table_Interval_Join_Builder<bids_counter_per_auction_query_4_select_3_struct_out, bids_counter_per_auction_query_4_select_3_struct_out, max_bid_count_select_7_struct_out>(
@@ -217,7 +217,7 @@ if( MAX_bids_counter_tmp > out.MAX_bids_counter ){
     46800000000
 )
     .withName("auctions_with_max_bids_join_interval_2")
-    .withParallelism(2)
+    .withParallelism(4)
     .withKeyBy([](const bids_counter_per_auction_query_4_select_3_struct_out& in) -> max_bid_count_select_7_struct_out {
     max_bid_count_select_7_struct_out out;
     out.maxxxxxx = in.maxxxxxx;
@@ -235,7 +235,7 @@ if( MAX_bids_counter_tmp > out.MAX_bids_counter ){
 }
 )
     .withName("auctions_with_max_bids_sink_9")
-    .withParallelism(2)
+    .withParallelism(4)
     .withHeader("auction_id,maxxxxxx")
     .build();
 

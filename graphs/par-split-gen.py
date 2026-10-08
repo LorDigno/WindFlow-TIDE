@@ -4,7 +4,7 @@ import matplotlib.ticker as ticker
 import numpy as np
 
 # 1. Lettura dal dataset unito
-df = pd.read_csv('./TIDE-data/q2-runs.csv')
+df = pd.read_csv('./TIDE-data/q5-runs.csv')
 df['Config'] = 'PAR: ' + df['PAR'].astype(str) + '\nSPLIT: ' + df['SPLIT'].astype(str)
 
 # 2. Creazione della figura con 2 grafici affiancati
@@ -17,12 +17,17 @@ ax1.set_xlabel('Configuration (parallelism and bid split-size mb)', fontsize=12)
 ax1.set_ylabel('Throughput (Tuple/s)', fontsize=12)
 ax1.set_title('A) Throughput', fontsize=14, pad=15)
 
+# Calcolo dinamico dell'offset per il testo (3% del valore massimo)
+max_throughput = df['Throughput_tps'].max()
+text_offset = max_throughput * 0.03
+
 for bar in bars_tp:
     yval = bar.get_height()
-    ax1.text(bar.get_x() + bar.get_width()/2, yval + 20000, f'{int(yval):,}', ha='center', va='bottom', fontsize=10)
+    # Utilizzo text_offset al posto del 20000 fisso
+    ax1.text(bar.get_x() + bar.get_width()/2, yval + text_offset, f'{int(yval):,}', ha='center', va='bottom', fontsize=10)
 
 ax1.grid(axis='y', linestyle='--', alpha=0.7)
-ax1.set_ylim(0, max(df['Throughput_tps']) * 1.15) 
+ax1.set_ylim(0, max_throughput * 1.15) 
 
 # --- PLOT B: Data Skew (Grouped) ---
 threads = ['T1', 'T2', 'T3', 'T4', 'T5']
@@ -57,5 +62,5 @@ ax2.legend(title='Replicas', bbox_to_anchor=(1.05, 1), loc='upper left')
 
 # 3. Ottimizzazione layout e salvataggio
 plt.tight_layout()
-plt.savefig('q2-graph.png', dpi=300)
+plt.savefig('q5-graph.png', dpi=300)
 plt.show()
