@@ -4,11 +4,11 @@
 
 Il sistema permette di scrivere pipeline di streaming complesse in poche righe di Python: TIDE valida staticamente gli schemi, serializza il piano logico in un AST JSON, genera codice C++17 nativo ottimizzato e ne orchestra la compilazione e l'esecuzione in modo trasparente.
 
-## 📁 Struttura del Repository
+## Struttura del Repository
 
 Il progetto è articolato in tre livelli principali all'interno del package Python (`api`, `codegen`, `runtime`), affiancati dagli header C++ dei builder custom e dalla suite di validazione NEXMark:
 
-```text
+```
 WindFlow-Table-API/
 ├── src/
 │   └── windflow_tide/  #omettendo gli init
@@ -70,6 +70,58 @@ WindFlow-Table-API/
 ├── native_benchmarks/            # Suite di benchmark NEXMark (applicazioni WF native)
 ├── pyproject.toml                # Configurazione del package Python e dipendenze
 └── README.md
+```
+
+## Prerequisiti di Sistema
+
+Per compilare ed eseguire le pipeline generate da TIDE, l'ambiente di sviluppo deve soddisfare i seguenti requisiti software e di libreria:
+Backend C++ e Compilazione
+
+    Compilatore C++17: g++ (≥9.0, testato e validato con GCC 13.3) o clang++ equivalente.   
+    Tesi_Lorenzoni_2026.pdf
+
+    Build System: CMake (≥3.15) e Make (oppure Ninja).
+
+    Librerie di Supporto (Header-Only):
+
+        FastFlow: runtime a memoria condivisa basato su code non bloccanti.
+
+        WindFlow: motore C++17 nativo per streaming multicore ad alte prestazioni.
+
+    Librerie di Sistema: pthread (necessaria per il threading POSIX nativo di FastFlow e WindFlow).
+
+Frontend Python e Generazione Codice
+
+    Python: versione ≥3.10 (ambiente di riferimento testato su Python 3.12.3).   
+
+    Dipendenze Python: Jinja2 (utilizzata dal motore di templating per sintetizzare i sorgenti C++). 
+    (dovrebbe installarsi alla clonazione del repo)
+
+Installazione e Configurazione
+1. Ambiente Virtuale Python
+Si consiglia di isolare le dipendenze in un virtual environment dedicato:
+```
+python3 -m venv .venv
+source .venv/bin/activate
+```
+2. Installazione del Package in Modalità Sviluppatore
+Installa il pacchetto windflow_tide in modalità editable (-e), in modo che qualsiasi modifica all'API o ai template Jinja2 si rifletta immediatamente a runtime senza dover reinstallare il modulo:
+```
+pip install -e .
+```
+
+## Guida all'Uso: Composizione ed Esecuzione di una Query
+
+Per scrivere delle nuove query si consigliano i seguenti import:
+```
+from windflow_tide import *
+from pathlib import Path
+```
+Al momento della scrittura devo ancora sistemare per bene tutti gli init che sono un po' disordinati, in ogni caso l'utente non dovrebbe mai utilizzare classi al di fuori del sottomodulo api/.
+
+Scritto il file python della query e inizializzato l'ambiente virtuale basta eseguire con:
+```
+python3 example_query.py
 ```
 
 
