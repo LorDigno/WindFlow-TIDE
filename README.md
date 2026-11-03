@@ -98,6 +98,8 @@ Frontend Python e Generazione Codice
     (dovrebbe installarsi alla clonazione del repo)
 
 Installazione e Configurazione
+I seguenti passaggi vanno fatti una volta clonato il repo. Nel caso non si volesse clonare tutto bastano i contenuti di include/ e di windflow_tide/ con ovviamentre le varie dipendenze specificate nel toml. 
+
 1. Ambiente Virtuale Python
 Si consiglia di isolare le dipendenze in un virtual environment dedicato:
 ```
@@ -111,6 +113,10 @@ pip install -e .
 ```
 
 ## Guida all'Uso: Composizione ed Esecuzione di una Query
+
+La struttura di uno script TIDE, la semantica e sintassi dei suoi costrutti sono ben delimitati e scpiegati nella tesi.
+
+
 
 Per scrivere delle nuove query si consigliano i seguenti import:
 ```
