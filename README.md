@@ -112,11 +112,9 @@ Installa il pacchetto windflow_tide in modalità editable (-e), in modo che qual
 pip install -e .
 ```
 
-## Guida all'Uso: Composizione ed Esecuzione di una Query
+## Guida all'Uso
 
-La struttura di uno script TIDE, la semantica e sintassi dei suoi costrutti sono ben delimitati e scpiegati nella tesi.
-
-
+La struttura di uno script TIDE, la semantica e sintassi dei suoi costrutti sono ben delimitati e spiegati nella tesi.
 
 Per scrivere delle nuove query si consigliano i seguenti import:
 ```
